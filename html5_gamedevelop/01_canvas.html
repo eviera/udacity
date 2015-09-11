@@ -1,0 +1,56 @@
+<body id="body">
+</body>
+
+<script type="text/javascript">
+var canvas = null;
+var ctx = null;
+var assets = ['untitled1.png',
+              'untitled2.png',
+              'untitled3.png',
+              'untitled4.png',
+             ];
+var frames = [];
+
+var onImageLoad = function(){
+  console.log("IMAGE!!!");
+};
+
+var setup = function() {
+	var body = document.getElementById("body");
+	canvas = document.createElement("canvas");
+
+	ctx = canvas.getContext('2d');
+
+	canvas.setAttribute('width', 500);
+	canvas.setAttribute('height', 700);
+
+	body.appendChild(canvas);
+
+  assets.forEach(function(x) {
+    var img = new Image();
+    img.onload = onImageLoad;
+    img.src = x;
+    frames.push(img);
+  });
+
+  setInterval(animate, 1000 / 30);
+};
+var i = 0;
+var animate = function(){
+    // Draw each frame in order, looping back around to the
+    // beginning of the animation once you reach the end.
+    // Draw each frame at a position of (0,0) on the canvas.
+
+    // Try your code with this call to clearRect commented out
+    // and uncommented to see what happens!
+    //
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var img = frames[i++];
+    ctx.drawImage(img, 0, 0);
+    if (i == frames.length) i = 0;
+};
+
+  setup();
+
+
+</script>
