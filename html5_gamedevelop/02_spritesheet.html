@@ -94,7 +94,7 @@ SpriteSheetClass = Class.extend({
         // variable.
         //
 		// YOUR CODE HERE
-
+		var parsedAtlas = JSON.parse(atlasJSON);
 
         // For each sprite in the parsed JSON,
         // 'chaingun.png', chaingun_impact.png',
@@ -115,7 +115,15 @@ SpriteSheetClass = Class.extend({
         //    'SpriteSheetClass'.
         //
         // YOUR CODE HERE
-
+				for (var key in parsedAtlas.frames) {
+				  if (!parsedAtlas.frames.hasOwnProperty(key)) {
+				    continue;
+				  }
+				  var frame = parsedAtlas.frames[key].frame;
+					var cx = -(frame.w / 2);
+					var cy = -(frame.h / 2);
+					this.defSprite(key, frame.x, frame.y, frame.w, frame.h, cx, cy);
+				}
 
 	}
 

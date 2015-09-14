@@ -1,0 +1,13 @@
+<script type="text/javascript">
+
+var atlasJSON = '{	"frames": {		"chaingun.png": {			"frame": {				"x": 1766,				"y": 202,				"w": 42,				"h": 34			}		},		"chaingun_impact.png": {			"frame": {				"x": 1162,				"y": 322,				"w": 38,				"h": 34			}		}	}}';
+
+var parsedAtlas = JSON.parse(atlasJSON);
+for (var key in parsedAtlas.frames) {
+  if (!parsedAtlas.frames.hasOwnProperty(key)) {
+    continue;
+  }
+  var sprite = parsedAtlas.frames[key];
+  console.log("sprite.x=" + sprite.frame.x);
+}
+</script>
